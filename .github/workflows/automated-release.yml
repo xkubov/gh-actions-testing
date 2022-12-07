@@ -48,6 +48,10 @@ jobs:
         with:
           path: install
 
+      - name: List
+        run: |
+          ls install
+
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
@@ -58,4 +62,4 @@ jobs:
             LICENSE.txt
             CHANGELOG.md
             some_file.txt
-            install/*
+            install
