@@ -54,7 +54,7 @@ jobs:
           for i in $(ls .); do
             tar -cvzf ../$i.tar.gz $i
           done
-        wordkir: install
+        working-directory: install
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
