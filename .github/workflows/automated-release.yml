@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: "Build & test"
-        if: runner.os != 'windows-latest'
+        if: runner.os != 'Windows'
         run: |
           mkdir artifact
           mkdir install
@@ -32,7 +32,7 @@ jobs:
           mv *.tar.xz ../artifact
 
       - name: "Build & test windows"
-        if: runner.os == 'windows-latest'
+        if: runner.os == 'Windows'
         run: |
           mkdir artifact
           mkdir install
