@@ -21,6 +21,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+        # We want to use msys2 bash on Windows.
+      - uses: msys2/setup-msys2@v2
+        if: runner.os == 'Windows'
+
       - name: "Build & test"
         if: runner.os != 'Windows'
         run: |
