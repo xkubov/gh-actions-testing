@@ -14,21 +14,36 @@ jobs:
     strategy:
       matrix:
         os:
+          - windows-latest
           - ubuntu-latest
           - macos-latest
 
     runs-on: ${{ matrix.os }}
+
     steps:
       - name: "Build & test"
+        if: runner.os != 'windows-latest'
         run: |
+          mkdir artifact
           mkdir install
           echo "done!" > install/${{ runner.os }}.log
+          cd install
+          tar -cvCf ../artifact/RetDec-${{ runner.os }}-Release.tar.xz *
+
+      - name: "Build & test windows"
+        if: runner.os == 'windows-latest'
+        run: |
+          mkdir artifact
+          mkdir install
+          echo "done!" > install/${{ runner.os }}.log
+          cd install
+          7z a ../artifact/RetDec-${{ runner.os }}-Release.7z *
+        shell: 'msys2 {0}'
 
       - name: Archive Artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
-          name: RetDec-${{ runner.os }}-Release
-          path: install
+          path: artifact/*
 
   pre-release:
     strategy:
