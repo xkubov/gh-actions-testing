@@ -31,7 +31,7 @@ jobs:
       - name: Archive Artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: RetDec-${{ runner.os }}-Release.tar.gz
+          name: RetDec-${{ runner.os }}-Release
           path: artifact.tar.gz
 
   pre-release:
@@ -52,6 +52,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: install
+
+
+      - name: Pack
+        run: |
+          for i in $(ls install); do
+            tar -cvzf $i.tar.gz install/$i
+          done
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
