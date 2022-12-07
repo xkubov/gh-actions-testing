@@ -5,7 +5,6 @@ name: RetDec pre-release
 on:
   push:
     branches:
-      - "master"
       - "main"
 
 jobs:
@@ -27,3 +26,4 @@ jobs:
           files: |
             LICENSE.txt
             CHANGELOG.md
+            some_file.txt
