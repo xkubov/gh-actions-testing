@@ -31,7 +31,7 @@ jobs:
       - name: Archive Artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: RetDec-${{ runner.os }}-Release
+          name: RetDec-${{ runner.os }}-Release.tar.gz
           path: artifact.tar.gz
 
   pre-release:
