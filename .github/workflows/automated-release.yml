@@ -49,13 +49,12 @@ jobs:
         with:
           path: install
 
-
-      - name: Pack
+      - name: Pack Artifacts
         run: |
-          cd install
           for i in $(ls .); do
             tar -cvzf ../$i.tar.gz $i
           done
+        wordkir: install
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
