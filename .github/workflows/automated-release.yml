@@ -51,7 +51,7 @@ jobs:
       - name: Archive Artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: RetDec.*
+          path: RetDec-*
 
 
   pre-release:
