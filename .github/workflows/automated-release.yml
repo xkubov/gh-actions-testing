@@ -38,6 +38,7 @@ jobs:
       - name: "Build & test windows"
         if: runner.os == 'Windows'
         run: |
+          choco install --no-progress 7zip
           mkdir artifact
           mkdir install
           echo "done!" > install/${{ runner.os }}.log
