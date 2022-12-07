@@ -28,12 +28,11 @@ jobs:
       - name: "Build & test"
         if: runner.os != 'Windows'
         run: |
-          mkdir artifact
           mkdir install
           echo "done!" > install/${{ runner.os }}.log
           cd install
           tar -cvJf RetDec-${{ runner.os }}-Release.tar.xz *
-          mv *.tar.xz ../artifact
+          mv *.tar.xz ..
 
       - name: Chooco
         if: runner.os == 'Windows'
@@ -42,19 +41,17 @@ jobs:
       - name: "Build & test windows"
         if: runner.os == 'Windows'
         run: |
-          mkdir artifact
           mkdir install
           echo "done!" > install/${{ runner.os }}.log
           cd install
           7z a RetDec-${{ runner.os }}-Release.7z *
-          mv *.7z ../artifact
+          mv *.7z ..
         shell: bash
 
       - name: Archive Artifacts
         uses: actions/upload-artifact@v3
         with:
           path: RetDec.*
-        working-directory: artifact
 
 
   pre-release:
