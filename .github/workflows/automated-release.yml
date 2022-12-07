@@ -84,5 +84,5 @@ jobs:
             LICENSE.txt
             CHANGELOG.md
             some_file.txt
-            install/*/*.tar.gz
+            install/*/*.tar.xz
             install/*/*.7z
