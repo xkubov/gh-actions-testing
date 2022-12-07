@@ -48,7 +48,7 @@ jobs:
           cd install
           7z a RetDec-${{ runner.os }}-Release.7z *
           mv *.7z ../artifact
-        shell: 'msys2 {0}'
+        shell: bash
 
       - name: Archive Artifacts
         uses: actions/upload-artifact@v3
