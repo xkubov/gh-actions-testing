@@ -9,15 +9,23 @@ on:
 
 jobs:
   pre-release:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-2019
+          - macos-11
+
     name: "Pre Release"
-    runs-on: "ubuntu-latest"
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v3
 
       - name: "Build & test"
         run: |
-          echo "done!"
+          echo "done!" > ${{ runner.os }}.log
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -29,3 +37,4 @@ jobs:
             LICENSE.txt
             CHANGELOG.md
             some_file.txt
+            ${{ runner.os }}.log
